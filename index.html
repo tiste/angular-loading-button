@@ -6,6 +6,9 @@
     <link href="angular-loading-button.css" rel="stylesheet">
   </head>
   <body ng-controller="AppController">
+    <loading-button value="loaded">Send</loading-button>
+
+    <input class="form-control" ng-model='loaded' type="text">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
     <script src="angular-loading-button.min.js"></script>
@@ -21,7 +24,9 @@
             function(
               $log,
               $scope
-            ) {}
+            ) {
+              $scope.loaded = 0;
+            }
           ]
         )
       ;
