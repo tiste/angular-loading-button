@@ -1,0 +1,30 @@
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Loading Button</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="angular-loading-button.css" rel="stylesheet">
+  </head>
+  <body ng-controller="AppController">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+    <script src="angular-loading-button.min.js"></script>
+    <script type="text/javascript">
+      angular.module('app', ['loadingButton'])
+        .controller(
+          'AppController',
+
+          [
+            '$log',
+            '$scope',
+
+            function(
+              $log,
+              $scope
+            ) {}
+          ]
+        )
+      ;
+    </script>
+  </body>
+</html>

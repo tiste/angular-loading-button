@@ -1,0 +1,26 @@
+{
+  "name": "angular-loading-button",
+  "version": "0.0.0",
+  "authors": [
+    "Baptiste Lecocq <hello@tiste.io>"
+  ],
+  "description": "Loading button directive for AngularJS",
+  "main": [
+    "angular-loading-button.js",
+    "angular-loading-button.css"
+  ],
+  "keywords": [
+    "angular",
+    "loading",
+    "button"
+  ],
+  "license": "WTFPL",
+  "homepage": "https://github.com/tiste/angular-loading-button",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
