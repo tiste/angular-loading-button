@@ -5,57 +5,56 @@
   width: 45%;
   min-width: 250px;
   margin: 10px;
-}
 
-.progress-button button {
-  display: block;
-  margin: 0 auto;
-  padding: 0;
-  width: 250px;
-  height: 70px;
-  border: 2px solid #1ECD97;
-  border-radius: 40px;
-  background: transparent;
-  color: #1ECD97;
-  letter-spacing: 1px;
-  font-size: 18px;
-  font-family: 'Montserrat', sans-serif;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
-  transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
-}
+  button {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    width: 250px;
+    height: 70px;
+    border: 2px solid #1ECD97;
+    border-radius: 40px;
+    background: transparent;
+    color: #1ECD97;
+    letter-spacing: 1px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+    transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+    
+    &:hover {
+      background-color: #1ECD97;
+      color: #fff;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
 
-.progress-button button:hover {
-  background-color: #1ECD97;
-  color: #fff;
-}
+  span {
+    -webkit-transition: opacity 0.3s 0.1s;
+    transition: opacity 0.3s 0.1s;
+  }
 
-.progress-button button:focus {
-  outline: none;
-}
-
-.progress-button button span {
-  -webkit-transition: opacity 0.3s 0.1s;
-  transition: opacity 0.3s 0.1s;
-}
-
-.progress-button svg {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-.progress-button svg path {
-  opacity: 0;
-  fill: none;
-}
-
-.progress-button svg.progress-circle path {
-  stroke: #1ECD97;
-  stroke-width: 5;
+  svg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    pointer-events: none;
+    
+    path {
+      opacity: 0;
+      fill: none;
+    }
+    
+    .progress-circle path {
+      stroke: #1ECD97;
+      stroke-width: 5;
+    }  
+  }
 }
 
 .loading.progress-button button {
