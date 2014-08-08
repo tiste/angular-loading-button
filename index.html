@@ -1,0 +1,80 @@
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Loading Button</title>
+    <meta name="viewport" content="width=device-width">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
+    <link href="angular-loading-button.css" rel="stylesheet">
+  </head>
+  <body ng-controller="AppController">
+    <div class="container">
+      <div class="row">
+        <div class="pos-absolute-center">
+          <div class="col-sm-6 clearfix">
+            <div class="progress-button pull-right" loading-button lb-completed="completed" lb-value="loaded">
+              <button>
+                <span class="default">Try me</span>
+                <span class="error">Try again :(</span>
+                <span class="success">Yeah!</span>
+              </button>
+              <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
+            </div>
+          </div>
+
+          <div class="actions col-sm-6">
+            <a class="btn btn-info" href="#" ng-click="loaded = .3">Set 0.3</a>
+            <a class="btn btn-success" href="#" ng-click="completed = true">Success</a>
+            <a class="btn btn-danger" href="#" ng-click="completed = false">Error</a>
+          </div>
+
+          <div class="col-xs-12 footer">
+            <small><strong><a href="http://twitter.com/tiste">@tiste</a></strong> - <a href="https://github.com/tiste/angular-loading-button">angular-loading-button</a></small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="angular-loading-button.min.js"></script>
+    <script type="text/javascript">
+      angular.module('app', ['loadingButton'])
+        .controller(
+          'AppController',
+
+          [
+            '$log',
+            '$scope',
+            '$document',
+
+            function(
+              $log,
+              $scope,
+              $document
+            ) {
+              $scope.loaded   = 0;
+
+              var pathsArr    = new Array();
+              var lengthsArr  = new Array();
+
+              angular.forEach($document[0].querySelectorAll('path'), function(path, i) {
+                pathsArr[i] = path;
+                path.style.strokeDasharray = lengthsArr[i] = path.getTotalLength();
+              });
+
+              var draw = function(val) {
+                for (var i = 0, len = pathsArr.length; i < len; ++i){
+                  pathsArr[i].style.strokeDashoffset = lengthsArr[i] * (1 - val);
+                }
+              }
+
+              $scope.$watch('loaded', function(v) {
+                draw(v);
+              });
+            }
+          ]
+        )
+      ;
+    </script>
+  </body>
+</html>
