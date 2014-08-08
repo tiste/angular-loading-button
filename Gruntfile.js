@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       css: {
-        files: 'src/*.scss',
+        files: 'example/*.scss',
         tasks: ['sass']
       },
       js: {
@@ -26,7 +26,7 @@ module.exports = function(grunt) {
           style: 'expanded'
         },
         files: {
-          'angular-loading-button.css': 'src/angular-loading-button.scss'
+          'example/angular-loading-button.css': 'example/angular-loading-button.scss'
         }
       }
     },

@@ -37,7 +37,6 @@
 .progress-button span {
   margin: auto;
   position: absolute;
-  width: 100%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -45,6 +44,7 @@
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  width: 100%;
   -webkit-transition: opacity 0.3s 0.1s;
   transition: opacity 0.3s 0.1s;
 }
@@ -63,7 +63,7 @@
   opacity: 0;
   fill: none;
 }
-.progress-button svg .progress-circle path {
+.progress-button svg.progress-circle path {
   stroke: #1ECD97;
   stroke-width: 5;
 }

@@ -1,0 +1,41 @@
+body {
+  background-color: #FEFEFE;
+}
+
+.pos-absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.actions {
+  margin-top: 27px;
+}
+
+.footer {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 60px;
+  color: #bbb;
+}
+
+.footer a {
+  color: #bbb;
+}
+
+@media (max-width: 767px) {
+  body {
+    text-align: center;
+  }
+
+  .progress-button {
+    float: none !important;
+  }
+}

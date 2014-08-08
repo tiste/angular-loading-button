@@ -1,6 +1,6 @@
 {
   "name": "angular-loading-button",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Loading button directive for AngularJS",
   "main": "angular-loading-button.js",
   "repository": {

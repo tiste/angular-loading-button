@@ -10,7 +10,7 @@ angular.module('loadingButton', [])
       ) {
         return {
           dropper: function(v) {
-            return this.inc(v, Math.random() * 0.02);
+            return this.inc(v, Math.random() * 0.1);
           },
 
           inc: function(v, amount) {
@@ -57,25 +57,11 @@ angular.module('loadingButton', [])
         loadingButton
       ) {
         return {
-          restrict: 'E',
-          transclude: true,
-          replace: true,
+          restrict: 'A',
           scope: {
-            completed: '=',
-            error: '=',
-            success: '=',
-            value: '='
+            completed: '=lbCompleted',
+            value: '=lbValue'
           },
-          template: '\
-            <div class="progress-button">\
-              <button>\
-                <span class="default" ng-transclude></span>\
-                <span class="error">{{error}}</span>\
-                <span class="success">{{success}}</span>\
-              </button>\
-              <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>\
-            </div>\
-          ',
           link: function(scope, element, attr) {
             if (typeof scope.value === 'undefined')
               scope.value = 0;
@@ -101,19 +87,22 @@ angular.module('loadingButton', [])
               scope.value     = 1;
 
               $interval.cancel(dropper);
-              element.removeClass('loading');
 
-              if (success) {
-                element.addClass('success');
-              } else {
-                element.addClass('error');
-              }
+              $timeout(function() {
+                element.removeClass('loading');
+
+                if (success) {
+                  element.addClass('success');
+                } else {
+                  element.addClass('error');
+                }
+              }, 400);
 
               $timeout(function() {
                 element.removeClass('success error');
                 started     = false;
                 scope.value = 0;
-              }, 2000);
+              }, 3000);
             };
 
             element.bind('click', function() {
