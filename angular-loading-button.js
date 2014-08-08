@@ -60,7 +60,7 @@ angular.module('loadingButton', [])
           restrict: 'A',
           scope: {
             completed: '=lbCompleted',
-            value: '=lbValue'
+            value: '=?lbValue'
           },
           link: function(scope, element, attr) {
             if (typeof scope.value === 'undefined')
@@ -73,13 +73,15 @@ angular.module('loadingButton', [])
               started = true;
               element.addClass('loading');
 
-              dropper = $interval(
-                function() {
-                  if (scope.value < 0.95) {
-                    scope.value = loadingButton.dropper(scope.value);
-                  }
-                }, 500
-              );
+              if (scope.value !== 1) {
+                dropper = $interval(
+                  function() {
+                    if (scope.value < 0.95) {
+                      scope.value = loadingButton.dropper(scope.value);
+                    }
+                  }, 500
+                );
+              }
             };
 
             var done = function(success) {
@@ -111,14 +113,10 @@ angular.module('loadingButton', [])
             });
 
             scope.$watch('completed', function(success) {
-              if (started) {
-                if (success == true) {
-                  done(true);
-                } else if (success == false) {
-                  done(false);
-                }
-              } else {
-                scope.completed = undefined;
+              if (success == true) {
+                done(true);
+              } else if (success == false) {
+                done(false);
               }
             });
 

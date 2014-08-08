@@ -17,26 +17,26 @@ angular.module('YourAwesomeApp', ['loadingButton']);
 Use it at a [directive](http://docs.angularjs.org/guide/directive):
 
 ```html
-<div class="btn btn-success" loading-button lb-completed="booleanThing">
+<div class="btn btn-success" loading-button lb-completed="isSuccess">
 ```
 
-You can also provide a `lb-value` tag to modify initial value of your button.
+You can also provide a `lb-value` tag to act on your button (e.g. `height`, `background`...).
 
-Then, simply set the `$scope.booleanThing` to `true` or `false`, or change the `lb-value` to update the loader e.g.
+Then, simply set the `$scope.isSuccess` to `true` or `false`, or change the `lb-value` to update the loader e.g.
 
 ```javascript
 $http.post('/contact', data).success(
   function() {
-    $scope.booleanThing = true;
+    $scope.isSuccess = true;
   }
 ).error(
   function() {
-    $scope.booleanThing = false;
+    $scope.isSuccess = false;
   }
 );
 ```
 
-Your button css classes life will be `loading`, `error` and `success`. It's up to you to customize ([here is](http://angular-loading-button.tiste.io) an example coming from [this](http://tympanus.net/Tutorials/CircularProgressButton/) awesome Codrops article).
+The css classes life-cycle will be `loading`, `error` and `success`. It's up to you to customize ([here is](http://angular-loading-button.tiste.io) an example coming from [this](http://tympanus.net/Tutorials/CircularProgressButton/) awesome Codrops article).
 
 ## Contributing
 

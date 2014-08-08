@@ -2,6 +2,7 @@
   <head>
     <meta charset="utf-8">
     <title>Angular Loading Button</title>
+    <meta name="viewport" content="width=device-width">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="stylesheet.css" rel="stylesheet">
     <link href="angular-loading-button.css" rel="stylesheet">
@@ -22,9 +23,9 @@
           </div>
 
           <div class="actions col-sm-6">
-            <a class="btn btn-info" href="#" ng-click="loaded = .3">Set 0.3</a>
-            <a class="btn btn-success" href="#" ng-click="completed = true">Success</a>
-            <a class="btn btn-danger" href="#" ng-click="completed = false">Error</a>
+            <button class="btn btn-info" ng-click="loaded = .3">Set 0.3</button>
+            <button class="btn btn-success" ng-click="completed = true">Success</button>
+            <button class="btn btn-danger" ng-click="completed = false">Error</button>
           </div>
 
           <div class="col-xs-12 footer">
@@ -51,8 +52,6 @@
               $scope,
               $document
             ) {
-              $scope.loaded   = 0;
-
               var pathsArr    = new Array();
               var lengthsArr  = new Array();
 
