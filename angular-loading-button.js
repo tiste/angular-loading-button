@@ -46,11 +46,13 @@ angular.module('loadingButton', [])
 
     [
       '$log',
+      '$interval',
       '$timeout',
       'loadingButton',
 
       function(
         $log,
+        $interval,
         $timeout,
         loadingButton
       ) {
@@ -59,33 +61,59 @@ angular.module('loadingButton', [])
           transclude: true,
           replace: true,
           scope: {
-            fail: '=',
+            completed: '=',
+            error: '=',
             success: '=',
             value: '='
           },
           template: '\
             <div class="progress-button">\
-              <button><span ng-transclude></span></button>\
+              <button>\
+                <span class="default" ng-transclude></span>\
+                <span class="error">{{error}}</span>\
+                <span class="success">{{success}}</span>\
+              </button>\
               <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>\
             </div>\
           ',
           link: function(scope, element, attr) {
-            var started = false;
-
-            if (typeof scope.value == 'undefined')
+            if (typeof scope.value === 'undefined')
               scope.value = 0;
+
+            var dropper,
+                started = false;
 
             var start = function() {
               started = true;
+              element.addClass('loading');
 
-              var dropper = function() {
-                $timeout(function () {
-                  scope.value = loadingButton.dropper(scope.value);
-                  dropper();
-                }, 500);
-              };
+              dropper = $interval(
+                function() {
+                  if (scope.value < 0.95) {
+                    scope.value = loadingButton.dropper(scope.value);
+                  }
+                }, 500
+              );
+            };
 
-              dropper();
+            var done = function(success) {
+              scope.completed = undefined;
+              scope.value     = 1;
+
+              $interval.cancel(dropper);
+              element.removeClass('loading');
+
+              if (success) {
+                element.addClass('success');
+              } else {
+                element.addClass('error');
+              }
+
+              $timeout(function() {
+                element.removeClass('success error');
+                started     = false;
+                scope.value = 0;
+              }, 2000);
             };
 
             element.bind('click', function() {
@@ -93,11 +121,21 @@ angular.module('loadingButton', [])
                 start();
             });
 
+            scope.$watch('completed', function(success) {
+              if (started) {
+                if (success == true) {
+                  done(true);
+                } else if (success == false) {
+                  done(false);
+                }
+              } else {
+                scope.completed = undefined;
+              }
+            });
+
             scope.$watch('value', function(v) {
               if (v > 0 && !started)
-                start();
-
-              $log.info(v);
+                start()
             });
           }
         };

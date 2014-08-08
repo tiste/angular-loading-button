@@ -15,6 +15,7 @@
     border: 2px solid #1ECD97;
     border-radius: 40px;
     background: transparent;
+    position: relative;
     color: #1ECD97;
     letter-spacing: 1px;
     font-size: 18px;
@@ -31,11 +32,29 @@
     &:focus {
       outline: none;
     }
+
+    > span {
+      opacity: 0;
+    }
   }
 
   span {
+    margin: auto;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     -webkit-transition: opacity 0.3s 0.1s;
     transition: opacity 0.3s 0.1s;
+
+    &.default {
+      opacity: 1;
+    }
   }
 
   svg {
@@ -56,41 +75,59 @@
       stroke-width: 5;
     }
   }
-}
 
-.loading.progress-button button {
-  width: 70px;
-  border-width: 5px;
-  border-color: #ddd;
-  background-color: transparent;
-  color: #fff;
-}
+  &.loading {
+    button {
+      width: 70px;
+      border-width: 5px;
+      border-color: #ddd;
+      background-color: transparent;
+      color: #fff;
+    }
 
-.loading.progress-button span {
-  -webkit-transition: opacity 0.15s;
-  transition: opacity 0.15s;
-}
+    span {
+      -webkit-transition: opacity 0.15s;
+      transition: opacity 0.15s;
+      opacity: 0;
+    }
+  }
 
-.loading.progress-button span,
-.success.progress-button span,
-.error.progress-button span {
-  opacity: 0;
+  &.success {
+    button {
+      border-color: #1ECD97;
+      background-color: #1ECD97;
+    }
+
+    span {
+      opacity: 0;
+
+      &.success {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.error {
+    button {
+      border-color: #FB797E;
+      background-color: #FB797E;
+    }
+
+    span {
+      opacity: 0;
+
+      &.error {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .success.progress-button button,
 .error.progress-button button {
   -webkit-transition: background-color 0.3s, width 0.3s, border-width 0.3s;
   transition: background-color 0.3s, width 0.3s, border-width 0.3s;
-}
-
-.success.progress-button button {
-  border-color: #1ECD97;
-  background-color: #1ECD97;
-}
-
-.error.progress-button button {
-  border-color: #FB797E;
-  background-color: #FB797E;
+  color: #fff;
 }
 
 .loading.progress-button svg.progress-circle path {
