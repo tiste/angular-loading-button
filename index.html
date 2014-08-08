@@ -10,8 +10,10 @@
 
     <input class="form-control" ng-model='loaded' type="text">
 
+    <a class="btn btn-success" href="#" ng-click="loaded = .3">Set 0.3</a>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
-    <script src="angular-loading-button.min.js"></script>
+    <script src="angular-loading-button.js"></script>
     <script type="text/javascript">
       angular.module('app', ['loadingButton'])
         .controller(

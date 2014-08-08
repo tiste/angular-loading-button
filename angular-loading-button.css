@@ -6,7 +6,6 @@
   min-width: 250px;
   margin: 10px;
 }
-
 .progress-button button {
   display: block;
   margin: 0 auto;
@@ -24,21 +23,17 @@
   -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
   transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
 }
-
 .progress-button button:hover {
   background-color: #1ECD97;
   color: #fff;
 }
-
 .progress-button button:focus {
   outline: none;
 }
-
-.progress-button button span {
+.progress-button span {
   -webkit-transition: opacity 0.3s 0.1s;
   transition: opacity 0.3s 0.1s;
 }
-
 .progress-button svg {
   position: absolute;
   top: 0;
@@ -47,13 +42,11 @@
   transform: translateX(-50%);
   pointer-events: none;
 }
-
 .progress-button svg path {
   opacity: 0;
   fill: none;
 }
-
-.progress-button svg.progress-circle path {
+.progress-button svg .progress-circle path {
   stroke: #1ECD97;
   stroke-width: 5;
 }

@@ -1,5 +1,5 @@
 angular.module('loadingButton', [])
-  .directive(
+  .factory(
     'loadingButton',
 
     [
@@ -7,6 +7,52 @@ angular.module('loadingButton', [])
 
       function(
         $log
+      ) {
+        return {
+          dropper: function(v) {
+            return this.inc(v, Math.random() * 0.02);
+          },
+
+          inc: function(v, amount) {
+            v = this.limit(v + amount, 0.05, 0.95);
+
+            return this.set(v);
+          },
+
+          limit: function(v, min, max) {
+            var r = v;
+
+            if (v < min) {
+              r = min;
+            }
+
+            if (v > max) {
+              r = max;
+            }
+
+            return r;
+          },
+
+          set: function(v) {
+            return this.limit(v, 0.05, 1);
+          }
+        };
+      }
+    ]
+  )
+
+  .directive(
+    'loadingButton',
+
+    [
+      '$log',
+      '$timeout',
+      'loadingButton',
+
+      function(
+        $log,
+        $timeout,
+        loadingButton
       ) {
         return {
           restrict: 'E',
@@ -24,8 +70,34 @@ angular.module('loadingButton', [])
             </div>\
           ',
           link: function(scope, element, attr) {
-            scope.$watch('value', function(value) {
-              $log.info(value);
+            var started = false;
+
+            if (typeof scope.value == 'undefined')
+              scope.value = 0;
+
+            var start = function() {
+              started = true;
+
+              var dropper = function() {
+                $timeout(function () {
+                  scope.value = loadingButton.dropper(scope.value);
+                  dropper();
+                }, 500);
+              };
+
+              dropper();
+            };
+
+            element.bind('click', function() {
+              if (!started)
+                start();
+            });
+
+            scope.$watch('value', function(v) {
+              if (v > 0 && !started)
+                start();
+
+              $log.info(v);
             });
           }
         };

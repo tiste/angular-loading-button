@@ -22,11 +22,12 @@
     -webkit-tap-highlight-color: transparent;
     -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
     transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
-    
+
     &:hover {
       background-color: #1ECD97;
       color: #fff;
     }
+
     &:focus {
       outline: none;
     }
@@ -44,16 +45,16 @@
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     pointer-events: none;
-    
+
     path {
       opacity: 0;
       fill: none;
     }
-    
+
     .progress-circle path {
       stroke: #1ECD97;
       stroke-width: 5;
-    }  
+    }
   }
 }
 
