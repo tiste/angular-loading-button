@@ -19,6 +19,13 @@
                 <span class="success">Yeah!</span>
               </button>
               <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
+
+              <div class="info light-gray">
+                <small>{{loaded * 100 | number:2}}</small>
+                <small class="m-state--loading"> - loading</small>
+                <small class="m-state--success"> - success</small>
+                <small class="m-state--error"> - error</small>
+              </div>
             </div>
           </div>
 
@@ -28,8 +35,8 @@
             <button class="btn btn-danger" ng-click="completed = false">Error</button>
           </div>
 
-          <div class="col-xs-12 footer">
-            <small><strong><a href="http://twitter.com/tiste">@tiste</a></strong> - <a href="https://github.com/tiste/angular-loading-button">angular-loading-button</a></small>
+          <div class="col-xs-12 footer text-center">
+            <small><strong><a class="light-gray" href="http://twitter.com/tiste">@tiste</a></strong> - <a class="light-gray" href="https://github.com/tiste/angular-loading-button">angular-loading-button</a></small>
           </div>
         </div>
       </div>

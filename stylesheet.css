@@ -2,6 +2,14 @@ body {
   background-color: #FEFEFE;
 }
 
+.light-gray {
+  color: #bbb;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .pos-absolute-center {
   margin: auto;
   position: absolute;
@@ -15,18 +23,33 @@ body {
   width: 100%;
 }
 
+.info {
+  margin-top: 5px;
+}
+
+[class*="m-state--"] {
+  display: none;
+}
+
+.progress-button.loading .m-state--loading {
+  display: inline;
+}
+
+.progress-button.success .m-state--success {
+  display: inline;
+}
+
+.progress-button.error .m-state--error {
+  display: inline;
+}
+
 .actions {
   margin-top: 27px;
 }
 
 .footer {
-  text-align: center;
   margin: 0 auto;
   margin-top: 60px;
-  color: #bbb;
-}
-
-.footer a {
   color: #bbb;
 }
 
