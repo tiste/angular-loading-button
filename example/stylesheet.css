@@ -24,27 +24,38 @@ body {
 }
 
 .info {
-  margin-top: 5px;
+  position: absolute;
+  width: 100%;
+  bottom: -25px;
 }
 
-[class*="m-state--"] {
+[class*="state--"] {
   display: none;
 }
 
-.progress-button.loading .m-state--loading {
+.bootstrap {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.loading .state--loading {
   display: inline;
 }
 
-.progress-button.success .m-state--success {
+.success .state--success {
   display: inline;
 }
 
-.progress-button.error .m-state--error {
+.error .state--error {
   display: inline;
 }
 
 .actions {
   margin-top: 27px;
+}
+
+.actions .btn {
+  margin-top: 5px;
 }
 
 .footer {
