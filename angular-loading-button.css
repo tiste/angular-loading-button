@@ -1,3 +1,10 @@
+.bootstrap .btn {
+  -webkit-transition: box-shadow 0.3s;
+  -moz-transition: box-shadow 0.3s;
+  -o-transition: box-shadow 0.3s;
+  -ms-transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+}
 .progress-button {
   position: relative;
   display: inline-block;
@@ -12,20 +19,24 @@
   padding: 0;
   width: 250px;
   height: 70px;
-  border: 2px solid #1ECD97;
+  border: 2px solid #1ecd97;
+  -webkit-border-radius: 40px;
   border-radius: 40px;
   background: transparent;
   position: relative;
-  color: #1ECD97;
+  color: #1ecd97;
   letter-spacing: 1px;
   font-size: 18px;
   font-family: 'Montserrat', sans-serif;
-  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
   -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  -moz-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  -o-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  -ms-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
   transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
 }
 .progress-button button:hover {
-  background-color: #1ECD97;
+  background-color: #1ecd97;
   color: #fff;
 }
 .progress-button button:focus {
@@ -33,6 +44,8 @@
 }
 .progress-button button > span {
   opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
 }
 .progress-button span {
   margin: auto;
@@ -41,30 +54,40 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 100%;
   -webkit-transition: opacity 0.3s 0.1s;
+  -moz-transition: opacity 0.3s 0.1s;
+  -o-transition: opacity 0.3s 0.1s;
+  -ms-transition: opacity 0.3s 0.1s;
   transition: opacity 0.3s 0.1s;
 }
 .progress-button span.default {
   opacity: 1;
+  -ms-filter: none;
+  filter: none;
 }
 .progress-button svg {
   position: absolute;
   top: 0;
   left: 50%;
   -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   pointer-events: none;
 }
 .progress-button svg path {
   opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
   fill: none;
 }
 .progress-button svg.progress-circle path {
-  stroke: #1ECD97;
+  stroke: #1ecd97;
   stroke-width: 5;
 }
 .progress-button.loading button {
@@ -76,39 +99,58 @@
 }
 .progress-button.loading span {
   -webkit-transition: opacity 0.15s;
+  -moz-transition: opacity 0.15s;
+  -o-transition: opacity 0.15s;
+  -ms-transition: opacity 0.15s;
   transition: opacity 0.15s;
   opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
 }
 .progress-button.success button {
-  border-color: #1ECD97;
-  background-color: #1ECD97;
+  border-color: #1ecd97;
+  background-color: #1ecd97;
 }
 .progress-button.success span {
   opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
 }
 .progress-button.success span.success {
   opacity: 1;
+  -ms-filter: none;
+  filter: none;
 }
 .progress-button.error button {
-  border-color: #FB797E;
-  background-color: #FB797E;
+  border-color: #fb797e;
+  background-color: #fb797e;
 }
 .progress-button.error span {
   opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
 }
 .progress-button.error span.error {
   opacity: 1;
+  -ms-filter: none;
+  filter: none;
 }
-
 .success.progress-button button,
 .error.progress-button button {
   -webkit-transition: background-color 0.3s, width 0.3s, border-width 0.3s;
+  -moz-transition: background-color 0.3s, width 0.3s, border-width 0.3s;
+  -o-transition: background-color 0.3s, width 0.3s, border-width 0.3s;
+  -ms-transition: background-color 0.3s, width 0.3s, border-width 0.3s;
   transition: background-color 0.3s, width 0.3s, border-width 0.3s;
   color: #fff;
 }
-
 .loading.progress-button svg.progress-circle path {
   opacity: 1;
+  -ms-filter: none;
+  filter: none;
   -webkit-transition: stroke-dashoffset 0.3s;
+  -moz-transition: stroke-dashoffset 0.3s;
+  -o-transition: stroke-dashoffset 0.3s;
+  -ms-transition: stroke-dashoffset 0.3s;
   transition: stroke-dashoffset 0.3s;
 }

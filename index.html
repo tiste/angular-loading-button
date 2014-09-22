@@ -12,20 +12,28 @@
       <div class="row">
         <div class="pos-absolute-center">
           <div class="col-sm-6 clearfix">
-            <div class="progress-button pull-right" loading-button lb-completed="completed" lb-value="loaded">
-              <button>
-                <span class="default">Try me</span>
-                <span class="error">Try again :(</span>
-                <span class="success">Yeah!</span>
-              </button>
-              <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
+            <div ng-hide="bootstrap">
+              <div class="progress-button pull-right" loading-button lb-completed="completed" lb-value="loaded">
+                <button>
+                  <span class="default">Try me</span>
+                  <span class="error">Try again :(</span>
+                  <span class="success">Yeah!</span>
+                </button>
+                <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
 
-              <div class="info light-gray">
-                <small>{{loaded * 100 | number:2}}</small>
-                <small class="m-state--loading"> - loading</small>
-                <small class="m-state--success"> - success</small>
-                <small class="m-state--error"> - error</small>
+                <div class="info light-gray">
+                  <small>{{loaded * 100 | number:2}}</small>
+                  <small class="state--loading"> - loading</small>
+                  <small class="state--success"> - success</small>
+                  <small class="state--error"> - error</small>
+                </div>
               </div>
+            </div>
+
+            <div class="bootstrap" ng-show="bootstrap">
+              <a href="#" class="btn btn-success btn-lg" loading-button lb-completed="completed" lb-value="loaded">
+                Try me
+              </a>
             </div>
           </div>
 
@@ -33,6 +41,10 @@
             <button class="btn btn-info" ng-click="loaded = .3">Set 0.3</button>
             <button class="btn btn-success" ng-click="completed = true">Success</button>
             <button class="btn btn-danger" ng-click="completed = false">Error</button>
+            <button class="btn btn-default" ng-click="bootstrap = !bootstrap">
+              <span ng-hide="bootstrap">Bootstrap mode?</span>
+              <span ng-show="bootstrap">Codrops mode?</span>
+            </button>
           </div>
 
           <div class="col-xs-12 footer text-center">
@@ -42,6 +54,7 @@
       </div>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script src="angular-loading-button.min.js"></script>
     <script type="text/javascript">
@@ -62,16 +75,41 @@
               var pathsArr    = new Array();
               var lengthsArr  = new Array();
 
+              $scope.bootstrap = false;
+
               angular.forEach($document[0].querySelectorAll('path'), function(path, i) {
                 pathsArr[i] = path;
                 path.style.strokeDasharray = lengthsArr[i] = path.getTotalLength();
               });
 
               var draw = function(val) {
+                // Bootstrap button
+                var btn = $('.bootstrap .btn');
+                var newV = (val * 100) * btn.outerWidth(true) / 100;
+
+                $('.bootstrap .btn').css({
+                  'box-shadow': 'inset ' + newV + 'px 0px 0px -20px #3f913f'
+                });
+
+                if (val == 1) {
+                  $('.bootstrap .btn').removeAttr('style');
+                }
+
+                // Codrops button
                 for (var i = 0, len = pathsArr.length; i < len; ++i){
                   pathsArr[i].style.strokeDashoffset = lengthsArr[i] * (1 - val);
                 }
               }
+
+              $scope.$watch('completed', function(v) {
+                if (v) {
+                  // success
+                }
+
+                if (v == false) {
+                  // error
+                }
+              });
 
               $scope.$watch('loaded', function(v) {
                 draw(v);
