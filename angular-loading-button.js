@@ -62,17 +62,17 @@ angular.module('loadingButton', [])
             completed: '=lbCompleted',
             value: '=?lbValue',
             completedDelay: '=?lbCompletedDelay',
-            clearDelay: '=?lbClearDelay'
+            resetDelay: '=?lbResetDelay'
           },
           link: function(scope, element, attr) {
             if (typeof scope.value === 'undefined')
               scope.value = 0;
 
             if (typeof scope.completedDelay === 'undefined')
-              scope.clearDelay = 400;
+              scope.completedDelay = 400;
 
-            if (typeof scope.clearDelay === 'undefined')
-              scope.clearDelay = 3000;
+            if (typeof scope.resetDelay === 'undefined')
+              scope.resetDelay = 3000;
 
             var dropper,
                 started = false;
@@ -112,7 +112,7 @@ angular.module('loadingButton', [])
                 element.removeClass('success error');
                 started     = false;
                 scope.value = 0;
-              }, scope.clearDelay);
+              }, scope.resetDelay);
             };
 
             element.bind('click', function() {
