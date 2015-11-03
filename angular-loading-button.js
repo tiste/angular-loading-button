@@ -60,11 +60,19 @@ angular.module('loadingButton', [])
           restrict: 'A',
           scope: {
             completed: '=lbCompleted',
-            value: '=?lbValue'
+            value: '=?lbValue',
+            completedDelay: '=?lbCompletedDelay',
+            clearDelay: '=?lbClearDelay'
           },
           link: function(scope, element, attr) {
             if (typeof scope.value === 'undefined')
               scope.value = 0;
+
+            if (typeof scope.completedDelay === 'undefined')
+              scope.clearDelay = 400;
+
+            if (typeof scope.clearDelay === 'undefined')
+              scope.clearDelay = 3000;
 
             var dropper,
                 started = false;
@@ -98,13 +106,13 @@ angular.module('loadingButton', [])
                 } else {
                   element.addClass('error');
                 }
-              }, 400);
+              }, scope.completedDelay);
 
               $timeout(function() {
                 element.removeClass('success error');
                 started     = false;
                 scope.value = 0;
-              }, 3000);
+              }, scope.clearDelay);
             };
 
             element.bind('click', function() {
