@@ -38,6 +38,9 @@ $http.post('/contact', data).success(
 
 The css classes life-cycle will be `loading`, `error` and `success`. It's up to you to customize ([here is](http://angular-loading-button.tiste.io) an example coming from [this](http://tympanus.net/Tutorials/CircularProgressButton/) awesome Codrops article).
 
+By default the state will change from `loading` to `success` or `error` after 400ms and the button will reset after 
+3000ms. These values are configurable using `lb-completed-delay` and `lb-reset-delay`. 
+
 ## Contributing
 
 1. [Fork it](http://github.com/tiste/angular-loading-button/fork)
