@@ -1,0 +1,110 @@
+<html ng-app="app" ng-strict-di>
+    <head>
+        <meta charset="utf-8">
+        <title>Angular Loading Button</title>
+        <meta name="viewport" content="width=device-width">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body ng-controller="AppController">
+        <div class="container">
+            <div class="row">
+                <div class="pos-absolute-center">
+                    <div class="col-sm-6 clearfix">
+                        <div ng-hide="bootstrap">
+                            <div class="progress-button pull-right" loading-button lb-completed="completed" lb-value="loaded">
+                                <button>
+                                    <span class="default">Try me</span>
+                                    <span class="error">Try again :(</span>
+                                    <span class="success">Yeah!</span>
+                                </button>
+                                <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
+
+                                <div class="info light-gray">
+                                    <small>{{loaded * 100 | number:2}}</small>
+                                    <small class="state--loading"> - loading</small>
+                                    <small class="state--success"> - success</small>
+                                    <small class="state--error"> - error</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bootstrap" ng-show="bootstrap">
+                            <a href="#" class="btn btn-success btn-lg" loading-button lb-completed="completed" lb-value="loaded">
+                                Try me
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="actions col-sm-6">
+                        <button class="btn btn-info" ng-click="loaded = .3">Set 0.3</button>
+                        <button class="btn btn-success" ng-click="completed = true">Success</button>
+                        <button class="btn btn-danger" ng-click="completed = false">Error</button>
+                        <button class="btn btn-default" ng-click="bootstrap = !bootstrap">
+                            <span ng-hide="bootstrap">Bootstrap mode?</span>
+                            <span ng-show="bootstrap">Codrops mode?</span>
+                        </button>
+                    </div>
+
+                    <div class="col-xs-12 footer text-center">
+                        <small><strong><a class="light-gray" href="http://twitter.com/tiste">@tiste</a></strong> - <a class="light-gray" href="https://github.com/tiste/angular-loading-button">angular-loading-button</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script type="text/javascript">
+            angular.module('app', [
+                'ngLoadingButton',
+            ])
+                .controller('AppController', AppController);
+
+            AppController.$inject = ['$scope', '$document'];
+            function AppController($scope, $document) {
+                const pathsArr = [];
+                const lengthsArr = [];
+
+                $scope.bootstrap = false;
+
+                angular.forEach($document[0].querySelectorAll('path'), function (path, i) {
+                    pathsArr[i] = path;
+                    path.style.strokeDasharray = lengthsArr[i] = path.getTotalLength();
+                });
+
+                const draw = function (val) {
+                    // Bootstrap button
+                    const btn = $('.bootstrap .btn');
+                    const newV = (val * 100) * btn.outerWidth(true) / 100;
+
+                    $('.bootstrap .btn').css({
+                        'box-shadow': 'inset ' + newV + 'px 0px 0px -20px #3f913f'
+                    });
+
+                    if (val === 1) {
+                        $('.bootstrap .btn').removeAttr('style');
+                    }
+
+                    // Codrops button
+                    for (let i = 0, len = pathsArr.length; i < len; ++i) {
+                        pathsArr[i].style.strokeDashoffset = lengthsArr[i] * (1 - val);
+                    }
+                }
+
+                $scope.$watch('completed', function (v) {
+                    if (v) {
+                        // success
+                    }
+
+                    if (v === false) {
+                        // error
+                    }
+                });
+
+                $scope.$watch('loaded', function (v) {
+                    draw(v);
+                });
+            }
+        </script>
+    </body>
+</html>

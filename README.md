@@ -1,18 +1,20 @@
 # angular-loading-button
 
-Loading button directive for AngularJS.
+Loading button directive for AngularJS
 
-## Installation
+## Install
 
-`bower install angular-loading-button --save`
+`$ npm install -SE angular-loading-button`
+
+Add it as an angular dependency:
+
+```js
+angular.module('app', [
+    'ngLoadingButton',
+]);
+```
 
 ## Usage
-
-Inject module into you app:
-
-```javascript
-angular.module('YourAwesomeApp', ['loadingButton']);
-```
 
 Use it at a [directive](http://docs.angularjs.org/guide/directive):
 
@@ -38,12 +40,18 @@ $http.post('/contact', data).success(
 
 The css classes life-cycle will be `loading`, `error` and `success`. It's up to you to customize ([here is](http://angular-loading-button.tiste.io) an example coming from [this](http://tympanus.net/Tutorials/CircularProgressButton/) awesome Codrops article).
 
-## Contributing
+## Build
 
-1. [Fork it](http://github.com/tiste/angular-loading-button/fork)
+Just run `npm run dev` to start webserver, and build everything with `npm run build`
+
+## Want to help?
+
+1. [Fork it](https://github.com/tiste/angular-query-builder/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
+3. Commit your changes using [commitizen](https://github.com/commitizen/cz-cli) (`git commit -am 'feat: add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-**NB**: mind generated files (e.g. `angular-loading-button.min.js`)
+## License
+
+[MIT](https://github.com/tiste/angular-query-builder/blob/master/LICENCE)

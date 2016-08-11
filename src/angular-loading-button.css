@@ -5,6 +5,7 @@
   -ms-transition: box-shadow 0.3s;
   transition: box-shadow 0.3s;
 }
+
 .progress-button {
   position: relative;
   display: inline-block;
@@ -13,6 +14,7 @@
   min-width: 250px;
   margin: 10px;
 }
+
 .progress-button button {
   display: block;
   margin: 0 auto;
@@ -35,18 +37,22 @@
   -ms-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
   transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
 }
+
 .progress-button button:hover {
   background-color: #1ecd97;
   color: #fff;
 }
+
 .progress-button button:focus {
   outline: none;
 }
+
 .progress-button button > span {
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
 }
+
 .progress-button span {
   margin: auto;
   position: absolute;
@@ -64,11 +70,13 @@
   -ms-transition: opacity 0.3s 0.1s;
   transition: opacity 0.3s 0.1s;
 }
+
 .progress-button span.default {
   opacity: 1;
   -ms-filter: none;
   filter: none;
 }
+
 .progress-button svg {
   position: absolute;
   top: 0;
@@ -80,16 +88,19 @@
   transform: translateX(-50%);
   pointer-events: none;
 }
+
 .progress-button svg path {
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   fill: none;
 }
+
 .progress-button svg.progress-circle path {
   stroke: #1ecd97;
   stroke-width: 5;
 }
+
 .progress-button.loading button {
   width: 70px;
   border-width: 5px;
@@ -97,6 +108,7 @@
   background-color: transparent;
   color: #fff;
 }
+
 .progress-button.loading span {
   -webkit-transition: opacity 0.15s;
   -moz-transition: opacity 0.15s;
@@ -107,34 +119,41 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
 }
+
 .progress-button.success button {
   border-color: #1ecd97;
   background-color: #1ecd97;
 }
+
 .progress-button.success span {
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
 }
+
 .progress-button.success span.success {
   opacity: 1;
   -ms-filter: none;
   filter: none;
 }
+
 .progress-button.error button {
   border-color: #fb797e;
   background-color: #fb797e;
 }
+
 .progress-button.error span {
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
 }
+
 .progress-button.error span.error {
   opacity: 1;
   -ms-filter: none;
   filter: none;
 }
+
 .success.progress-button button,
 .error.progress-button button {
   -webkit-transition: background-color 0.3s, width 0.3s, border-width 0.3s;
@@ -144,6 +163,7 @@
   transition: background-color 0.3s, width 0.3s, border-width 0.3s;
   color: #fff;
 }
+
 .loading.progress-button svg.progress-circle path {
   opacity: 1;
   -ms-filter: none;
